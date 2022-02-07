@@ -16,7 +16,11 @@ public class UserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String name = req.getParameter("name");
+        String last_name = req.getParameter("email");
+        String password = req.getParameter("password");
+
+
     }
 }
 
