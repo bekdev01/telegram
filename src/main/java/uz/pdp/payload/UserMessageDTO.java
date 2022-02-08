@@ -1,22 +1,19 @@
-package uz.pdp.model;
+package uz.pdp.payload;
+
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.bson.Document;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Message {
-    String text;
-    String date;
-    boolean isMine;
-
+public class UserMessageDTO {
+    List<UserDTO> users;
+    Response messages;
 }

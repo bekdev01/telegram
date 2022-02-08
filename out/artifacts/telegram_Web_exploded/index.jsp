@@ -14,51 +14,31 @@
 </head>
 <body>
 
-<div class="container-fluid bg-dark p-5 ">
-    <div class="row">
-        <div class="col-md-4 offset-4 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-primary">Register</h2>
-                </div>
-                <div class="card-body">
-                    <form action="/api/user" method="post">
-                        <div class="form-group">
-                            <input type="text" required class="form-control" name="firstname" placeholder="FIRSTNAME">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" required class="form-control" name="lastname" placeholder="LASTNAME">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" required class="form-control" name="phone" placeholder="PHONE NUMBER">
-                        </div>
-                        <div class="form-group">
-                            <input id="psw" type="password" required class="form-control" name="password"
-                                   onkeyup="checkPassword()" placeholder="PASSWORD">
-                        </div>
-                        <div class="form-group">
-                            <input id="prePsw" type="password" required class="form-control" onkeyup="checkPassword()"
-                                   name="prePassword"
-                                   placeholder="ENTER PASSWORD AGAIN">
-                        </div>
-                        <button id="register-btn" class="btn btn-primary float-right">Save</button>
-                    </form>
-                </div>
+<%
+    for (Cookie cookie : request.getCookies())
+        if(cookie.getName().equals("phone")){
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
+%>
+
+<div class="container-fluid bg-dark p-5">
+    <div class="row h-70">
+        <div class="col-md-10">
+            <h1 class="text-success">T E L E G R A M</h1>
+        </div>
+        <div class="col-md-2 float-right">
+            <div class="row">
+                <form action="/api/auth" class="mr-2" method="get">
+                    <button class="btn btn-success">SIGN IN</button>
+                </form>
+                <form action="/api/auth" class="mr-2" method="post">
+                    <button class="btn btn-primary">SIGN UP</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function checkPassword() {
-        let psw = document.getElementById("psw")
-        let prePsw = document.getElementById("prePsw")
-        let btn = document.getElementById("register-btn")
-        let ok=psw.value !== prePsw.value
-        btn.disabled = ok;
-        btn.className="btn float-right "+(ok?"btn-default":"btn-primary");
-        prePsw.style.borderColor = ok ? "red" : "green"
-    }
-</script>
 </body>
 </html>

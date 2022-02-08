@@ -1,4 +1,4 @@
-<%--
+<%@ page import="uz.pdp.utils.Word" %><%--
   Created by IntelliJ IDEA.
   User: bekzod5939
   Date: 08/02/22
@@ -12,15 +12,15 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Title</title>
 </head>
-<body>
-
-<div class="container-fluid bg-warning p-5 ">
+<body class="bg-default">
+<div class="container p-5 bg-dark mt-5">
     <div class="row">
         <div class="col-md-4 offset-4 mt-5">
-            <%--            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fklizos.com%2Fquirk-up-your-404-error-page-with-wit-and-humor%2F&psig=AOvVaw1JERBmJLVgpLRumMkhX4_A&ust=1644386230511000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCOjj7Zu27_UCFQAAAAAdAAAAABAZ"--%>
-            <%--                 alt=<%=request.getSession().getAttribute(Word.ERROR_TEXT)%>>--%>
-            <%--            <h1><%=request.getSession().getAttribute(Word.ERROR_TEXT)%></h1>--%>
-            <h1>hello</h1>
+            <div class="card">
+                <div class="card-body text-danger text-center">
+                    <h3><%=request.getSession().getAttribute(Word.ERROR_TEXT)%></h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>
