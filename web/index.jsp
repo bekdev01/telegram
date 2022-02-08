@@ -27,7 +27,7 @@
                             <input type="text" required class="form-control" name="name" placeholder="NAME">
                         </div>
                         <div class="form-group">
-                            <input type="text" required class="form-control" name="email" placeholder="EMAIL">
+                            <input type="email" required class="form-control" name="email" placeholder="EMAIL">
                         </div>
                         <div class="form-group">
                             <input id="psw" type="password" required class="form-control" name="password" onkeyup="checkPassword()" placeholder="PASSWORD">
@@ -48,9 +48,9 @@
     function checkPassword(){
         let psw=document.getElementById("psw")
         let prePsw=document.getElementById("prePsw")
-        console.log(psw.value)
-        console.log(prePsw.value)
         document.getElementById("register-btn").disabled=psw.value!==prePsw.value;
+        // document.getElementById("psw").disabled=psw.value!==prePsw.value;
+        // document.getElementById("prePsw").disabled=psw.value!==prePsw.value;
     }
 </script>
 </body>
