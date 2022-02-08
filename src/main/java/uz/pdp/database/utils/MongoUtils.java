@@ -16,7 +16,7 @@ public class MongoUtils {
         ArrayList<Document> messages = new ArrayList<>();
         doc.append("firstname", user.getFirstName())
                 .append("lastname", user.getLastName())
-                .append("email", user.getEmail())
+                .append("phone", user.getPhone())
                 .append("messages", messages);
         return doc;
     }

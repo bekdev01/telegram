@@ -24,19 +24,24 @@
                 <div class="card-body">
                     <form action="/api/user" method="post">
                         <div class="form-group">
-                            <input type="text" required class="form-control" name="name" placeholder="NAME">
+                            <input type="text" required class="form-control" name="firstname" placeholder="FIRSTNAME">
                         </div>
                         <div class="form-group">
-                            <input type="email" required class="form-control" name="email" placeholder="EMAIL">
+                            <input type="text" required class="form-control" name="lastname" placeholder="LASTNAME">
                         </div>
                         <div class="form-group">
-                            <input id="psw" type="password" required class="form-control" name="password" onkeyup="checkPassword()" placeholder="PASSWORD">
+                            <input type="text" required class="form-control" name="phone" placeholder="PHONE NUMBER">
                         </div>
                         <div class="form-group">
-                            <input id="prePsw" type="password" required class="form-control" onkeyup="checkPassword()" name="prePassword"
+                            <input id="psw" type="password" required class="form-control" name="password"
+                                   onkeyup="checkPassword()" placeholder="PASSWORD">
+                        </div>
+                        <div class="form-group">
+                            <input id="prePsw" type="password" required class="form-control" onkeyup="checkPassword()"
+                                   name="prePassword"
                                    placeholder="ENTER PASSWORD AGAIN">
                         </div>
-                        <button id="register-btn" class="btn btn-primary float-right" >Save</button>
+                        <button id="register-btn" class="btn btn-primary float-right">Save</button>
                     </form>
                 </div>
             </div>
@@ -45,12 +50,14 @@
 </div>
 
 <script>
-    function checkPassword(){
-        let psw=document.getElementById("psw")
-        let prePsw=document.getElementById("prePsw")
-        document.getElementById("register-btn").disabled=psw.value!==prePsw.value;
-        // document.getElementById("psw").disabled=psw.value!==prePsw.value;
-        // document.getElementById("prePsw").disabled=psw.value!==prePsw.value;
+    function checkPassword() {
+        let psw = document.getElementById("psw")
+        let prePsw = document.getElementById("prePsw")
+        let btn = document.getElementById("register-btn")
+        let ok=psw.value !== prePsw.value
+        btn.disabled = ok;
+        btn.className="btn float-right "+(ok?"btn-default":"btn-primary");
+        prePsw.style.borderColor = ok ? "red" : "green"
     }
 </script>
 </body>

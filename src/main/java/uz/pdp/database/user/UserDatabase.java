@@ -23,7 +23,7 @@ public class UserDatabase implements BaseDatabase {
         MongoDatabase database = BaseDatabase.getDatabase();
         MongoCollection<Document> users = database.getCollection("users");
         Document user1 = users.
-                find(Filters.eq("email", user.getEmail())).first();
+                find(Filters.eq("phone", user.getPhone())).first();
         if (user1 != null)
             return null;
         Document doc = MongoUtils.getUserDocument(user);

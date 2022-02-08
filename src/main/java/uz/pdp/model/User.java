@@ -13,14 +13,22 @@ public class User {
     String id;
     String firstName;
     String lastName;
-    String email;
-    String emailPassword;
+    String phone;
+    String password;
     ArrayList<Document> messages;
 
-    public User(String firstName, String lastName, String email, String emailPassword) {
+    public User(String firstName, String lastName, String phone, String password, ArrayList<Document> messages) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
-        this.emailPassword = emailPassword;
+        this.phone = phone;
+        this.password = password;
+        this.messages = messages;
+    }
+
+    public User(String firstName, String lastName, String phone, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.password = password;
     }
 }
