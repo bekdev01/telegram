@@ -22,7 +22,7 @@
                     <h2 class="text-primary">Register</h2>
                 </div>
                 <div class="card-body">
-                    <form action="/api/user" method="post">
+                    <form action="${pageContext.request.contextPath}/user.jsp" method="post">
                         <div class="form-group">
                             <input type="text" required class="form-control" name="name" placeholder="NAME">
                         </div>
@@ -36,7 +36,7 @@
                             <input id="prePsw" type="password" required class="form-control" onkeyup="checkPassword()" name="prePassword"
                                    placeholder="ENTER PASSWORD AGAIN">
                         </div>
-                        <button id="register-btn" class="btn btn-primary float-right" >Save</button>
+                        <button id="register-btn" class="btn btn-primary float-right">Save</button>
                     </form>
                 </div>
             </div>
