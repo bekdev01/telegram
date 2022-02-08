@@ -5,9 +5,12 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import org.bson.Document;
 
+import java.util.Date;
+
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Message {
-    Document from;
-    Document to;
+    String text;
+    Date date;
+    boolean isMine;
 }

@@ -8,6 +8,7 @@ import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
 import database.base.BaseDatabase;
 import database.utils.MongoUtils;
+import model.Message;
 import model.User;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -41,37 +42,34 @@ public class UserDatabase implements BaseDatabase {
 
     }
 
-    public Document getUser(String id){
+    public Document getUser(String id) {
 
         return getDatabase().getCollection("users").find(Filters.eq(new ObjectId(id))).first();
     }
-
 
 
     public boolean addMessage(String toId, String fromId, String text) {
         MongoDatabase connection = getDatabase();
         MongoCollection<Document> users = connection.getCollection("users");
 
-        // from
         Document fromUser = getUser(fromId);
         Document toUser = getUser(toId);
 
-        Bson filterFrom = and(eq("_id", new ObjectId(fromId)), eq("messages.id" , toId));
+        Bson filterFrom = and(eq("_id", new ObjectId(fromId)), eq("messages.id", toId));
         Bson filterTo = and(eq("_id", new ObjectId(toId)), eq("messages.id", fromId));
 
         Document docFrom = users.find(filterFrom).first();
         Document docTo = users.find(filterTo).first();
-        if (docFrom == null && docTo == null ) {
+        if (docFrom == null && docTo == null) {
             Document message = new Document();
             message.append("text", text)
                     .append("date", new Date())
                     .append("isMine", true);
             ArrayList<Document> msg = new ArrayList<>();
             msg.add(message);
-            Document document= new Document()
-                    .append("id" , toId)
+            Document document = new Document()
+                    .append("id", toId)
                     .append("messageUser", msg);
-
 
 
             Bson updates = Updates.push("messages", document);
@@ -80,8 +78,8 @@ public class UserDatabase implements BaseDatabase {
             message.put("isMine", false);
             msg = new ArrayList<>();
             msg.add(message);
-            document= new Document()
-                    .append("id" , fromId)
+            document = new Document()
+                    .append("id", fromId)
                     .append("messageUser", msg);
 
             updates = Updates.push("messages", document);
@@ -104,6 +102,22 @@ public class UserDatabase implements BaseDatabase {
         return true;
 
 
+    }
+
+    public ArrayList<Document> getMessage(String fromId, String toId) {
+
+        MongoCollection<Document> users = getDatabase().getCollection("users");
+        Document user = getUser(fromId);
+        ArrayList<Document> messages = (ArrayList<Document>) user.get("messages");
+        for (var msg : messages) {
+            if (msg.get("id").equals(toId)) {
+                return  (ArrayList<Document>) msg.get("messageUser");
+
+            }
+        }
+
+
+        return null;
     }
 
 
@@ -167,6 +181,13 @@ public class UserDatabase implements BaseDatabase {
 //
 //    }
 
+//    public static void main(String[] args) {
+//        UserDatabase userDatabase = new UserDatabase();
+//        ArrayList<Document> message = userDatabase.getMessage("62014ae137b08d3d00883e32", "6201ea601781a52c21662c41");
+////        userDatabase.addUser(new User("forbid","accept", "party","drive"));
+//        System.out.println(message);
+////        userDatabase.addMessage("6201ea601781a52c21662c41", "62014ae137b08d3d00883e32" , "sd");
+//    }
 
 
 }
