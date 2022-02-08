@@ -6,6 +6,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="telegram" />
+          <element id="jpa-descriptors" facet="telegram/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />
@@ -13,6 +14,7 @@
           <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:3.12.10" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.22" />
           <element id="library" level="application" name="bootstrap" />
+          <element id="library" level="project" name="JPA 1.0-JPA 1.0" />
         </element>
       </element>
     </root>

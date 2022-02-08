@@ -38,7 +38,6 @@ public class UserDatabase implements BaseDatabase {
         users.insertOne(doc);
 
         return doc;
-
     }
 
     public Document getUser(String id) {

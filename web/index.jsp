@@ -1,4 +1,5 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.User" %><%--
   Created by IntelliJ IDEA.
   User: bekzod5939
   Date: 07/02/22
@@ -13,7 +14,6 @@
     <title>Title</title>
 </head>
 <body>
-
 <div class="container-fluid bg-dark p-5 ">
     <div class="row">
         <div class="col-md-4 offset-4 mt-5">
