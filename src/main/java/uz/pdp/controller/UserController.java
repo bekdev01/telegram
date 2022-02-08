@@ -1,5 +1,7 @@
 package uz.pdp.controller;
 
+import uz.pdp.database.user.UserDatabase;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +20,6 @@ public class UserController extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-
 
 
 

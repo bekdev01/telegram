@@ -18,9 +18,9 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class UserDatabase implements BaseDatabase {
 
-    public Document addUser(User user) {
+    public static Document addUser(User user) {
 
-        MongoDatabase database = getDatabase();
+        MongoDatabase database = BaseDatabase.getDatabase();
         MongoCollection<Document> users = database.getCollection("users");
         Document user1 = users.
                 find(Filters.eq("email", user.getEmail())).first();
@@ -31,14 +31,14 @@ public class UserDatabase implements BaseDatabase {
         return doc;
     }
 
-    public Document getUser(String id) {
+    public static Document getUser(String id) {
 
-        return getDatabase().getCollection("users").find(Filters.eq(new ObjectId(id))).first();
+        return BaseDatabase.getDatabase().getCollection("users").find(Filters.eq(new ObjectId(id))).first();
     }
 
 
-    public boolean addMessage(String fromId, String toId, String text) {
-        MongoDatabase connection = getDatabase();
+    public static boolean addMessage(String fromId, String toId, String text) {
+        MongoDatabase connection = BaseDatabase.getDatabase();
         MongoCollection<Document> users = connection.getCollection("users");
 
         Document fromUser = getUser(fromId);
@@ -76,7 +76,7 @@ public class UserDatabase implements BaseDatabase {
 
     }
 
-    public ArrayList<Document> getMessage(String fromId, String toId) {
+    public static ArrayList<Document> getMessage(String fromId, String toId) {
 
         Document user = getUser(fromId);
         ArrayList<Document> messages = (ArrayList<Document>) user.get("messages");
