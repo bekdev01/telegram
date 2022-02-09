@@ -15,6 +15,7 @@
 <body>
 
 <%
+    if(request.getCookies()!=null && request.getCookies().length!=0)
     for (Cookie cookie : request.getCookies())
         if(cookie.getName().equals("phone")){
             cookie.setMaxAge(0);

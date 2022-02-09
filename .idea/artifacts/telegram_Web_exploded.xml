@@ -7,6 +7,8 @@
         <element id="directory" name="classes">
           <element id="module-output" name="telegram" />
           <element id="library" level="application" name="jquery-3.5.1" />
+          <element id="library" level="application" name="jquery-3.3.1.slim" />
+          <element id="library" level="application" name="popper.js" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />

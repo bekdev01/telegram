@@ -62,6 +62,10 @@
     UserMessageDTO userMessageDTO = (UserMessageDTO) request.getSession().getAttribute(Word.MESSAGE_LIST);
 %>
 
+
+
+
+
 <div class="container-fluid bg-white p-5 border h-100">
     <div class="row h-100 bg-light">
         <div class="chats col-4 order p">
@@ -102,14 +106,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="card-body h-75">
-                    <div class="m-3">
-                        <div class="tab-content mt-1">
-                            <div class="tab-pane fade show active" id="main">
-                                <ul class="list-group">
+                <div class="card-body h-75" style="overflow-y:auto;">
+                    <div class="m-3" >
+                        <div class="tab-content mt-1" style="overflow-y:auto;">
+                            <div class="tab-pane fade show active"  id="main">
+                                <ul class="list-group" >
                                     <c:forEach items="<%=userMessageDTO.getUsers()%>" var="user">
-                                        <a href="chat?id=${user.id}" class="btn btn-outline-success text-left my-1">
-                                            <li class="list-group-item list-group-item-action">
+                                        <a href="chat?id=${user.id}" class="btn btn-outline-success text-left my-1" >
+                                            <li class="list-group-item list-group-item-action" style="overflow-y:auto;">
                                                 <h6 class="p-0 my-0">${user.fullName}</h6>
                                                 <p class="p-0 my-0 small text-muted">${user.phone}</p>
                                             </li>
@@ -142,17 +146,19 @@
                 <div class="card-header h-25">
                     <h1 class="text-success">TELEGRAM</h1>
                 </div>
-                <div class="card-body h-50">
-                       <c:forEach items="<%=userMessageDTO.getMessages().getMessageUser()%>" var="message">
-                           <li class="list-group-item list-group-item-action border-0 ${message.mine?"text-right":"text-left"}">
-                               <p class="p-0 my-0">${message.text}</p>
-                               <p class="p-0 my-0 small text-muted"><i>${message.date.substring(11,19)}</i></p>
-                           </li>
-                       </c:forEach>
+                <div class="card-body h-50" style="overflow-y:auto;">
+
+
+                        <c:forEach items="<%=userMessageDTO.getMessages().getMessageUser()%>" var="message">
+                            <li class="list-group-item list-group-item-action border-0 ${message.mine?"text-right":"text-left"}">
+                                <p class="p-0 my-0">${message.text}</p>
+                                <p class="p-0 my-0 small text-muted"><i>${message.date.substring(11,19)}</i></p>
+                            </li>
+                        </c:forEach>
                 </div>
                 <div class="card-footer h-25">
                     <form action="/api/chat?id=<%=userMessageDTO.getMessages().getId()%>" method="post">
-                        <input class="form-control " type="text" placeholder="Message" name="text">
+                        <input class=" p-3 form-control mt-5" type="text" placeholder="Message" name="text" required>
                     </form>
                 </div>
             </div>
@@ -179,7 +185,6 @@
             $(".dropdown-menu").slideUp("fast");
         }
     });
-
 
 </script>
 </body>

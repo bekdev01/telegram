@@ -102,11 +102,11 @@
                         </li>
                     </ul>
                 </div>
-                <div class="card-body h-75">
+                <div class="card-body h-75" style="overflow-y:auto;">
                     <div class="m-3">
                         <div class="tab-content mt-1">
                             <div class="tab-pane fade show active" id="main">
-                                <ul class="list-group">
+                                <ul class="list-group overflow-auto">
                                     <c:forEach items="<%=userMessageDTO.getUsers()%>" var="user">
                                         <a href="chat?id=${user.id}" class="btn btn-outline-success text-left my-1">
                                             <li class="list-group-item list-group-item-action">
@@ -147,7 +147,7 @@
                 </div>
                 <div class="card-footer h-25">
                     <form action="/api/chat" method="post">
-                        <input class="form-control " type="text" placeholder="Message" name="text">
+                        <input class="form-control mt-5 p-3"  required disabled="true" name="text" placeholder="Message" type="text">
                     </form>
                 </div>
             </div>
